@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='event_style.css') }}">
+    <title>Available Events - EMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+        }
+
+        header {
+            background: #4e73df;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            margin: 0;
+        }
+
+        .logout-btn {
+            background: #e74a3b;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        .container {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #4e73df;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .register-btn {
+            display: inline-block;
+            padding: 8px 18px;
+            background: #1cc88a;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #17a673;
+        }
+
+        .empty {
+            text-align: center;
+            color: #777;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>Event Management System</h2>
+    <a href="/logout" class="logout-btn">Logout</a>
+</header>
+
+<div class="container">
+    <h2 class="title">Available Events</h2>
+
+    {% if events %}
+    <div class="cards">
+        {% for event in events %}
+        <div class="card">
+
+            {% if "AI" in event[1] %}
+                <img src="{{ url_for('static', filename='ai.jpg') }}">
+
+            {% elif "Web Development" in event[1] %}
+                <img src="{{ url_for('static', filename='web.jpg') }}">
+
+            {% elif "Cyber" in event[1] %}
+                <img src="{{ url_for('static', filename='cyber.jpg') }}">
+
+            {% elif "Startup" in event[1] %}
+                <img src="{{ url_for('static', filename='start.jpg') }}">
+
+            {% elif "Data Science" in event[1] %}
+                <img src="{{ url_for('static', filename='data.jpg') }}">
+
+            {% elif "Hackathon" in event[1] %}
+                <img src="{{ url_for('static', filename='hack.jpg') }}">
+
+            {% elif "Cloud" in event[1] %}
+                <img src="{{ url_for('static', filename='cloud.jpg') }}">
+
+            {% elif "Robotics" in event[1] %}
+                <img src="{{ url_for('static', filename='robo.jpg') }}">
+
+            {% elif "Mobile" in event[1] %}
+                <img src="{{ url_for('static', filename='mobile.jpg') }}">
+
+            {% else %}
+                <img src="{{ url_for('static', filename='career.jpg') }}">
+            {% endif %}
+
+            <div class="card-content">
+                <h3>{{ event[1] }}</h3>
+                <p>{{ event[2] }}</p>
+
+                <a href="/register_event/{{ event[0] }}" class="register-btn">
+                    Register
+                </a>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="empty">No events available right now.</p>
+    {% endif %}
+</div>
+<div class="wave"></div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Already Registered</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff4e50, #f9d423);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 50px;
+            width: 450px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: red;
+            margin-bottom: 20px;
+        }
+
+        .event-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4e73df;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 25px;
+            background: #4e73df;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        a:hover {
+            background: #2e59d9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>⚠ Already Registered!</h2>
+    <p>You have already registered for:</p>
+    <div class="event-name">{{ event[1] }}</div>
+    <a href="/events">Back to Events</a>
+</div>
+
+</body>
+</html>
