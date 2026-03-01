@@ -1,3 +1,4 @@
+<title>THIS IS NEW</title>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,123 +6,181 @@
     <title>Available Events - EMS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f6f9;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
-        header {
-            background: #4e73df;
-            color: white;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        body{
+            min-height:100vh;
+            background: linear-gradient(-45deg,#4e73df,#6f42c1,#1cc88a,#2c3e50);
+            background-size:400% 400%;
+            animation: gradientMove 12s ease infinite;
+            overflow-x:hidden;
         }
 
-        header h2 {
-            margin: 0;
+        @keyframes gradientMove{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
         }
 
-        .logout-btn {
-            background: #e74a3b;
-            color: white;
-            padding: 8px 15px;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: 0.3s;
+        /* Floating glow effect */
+        body::before, body::after{
+            content:"";
+            position:fixed;
+            width:500px;
+            height:500px;
+            border-radius:50%;
+            filter:blur(150px);
+            opacity:0.3;
+            z-index:-1;
         }
 
-        .logout-btn:hover {
-            background: #c0392b;
+        body::before{
+            background:#1cc88a;
+            top:-150px;
+            left:-150px;
         }
 
-        .container {
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
+        body::after{
+            background:#4e73df;
+            bottom:-150px;
+            right:-150px;
         }
 
-        .title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #333;
+        header{
+            backdrop-filter:blur(15px);
+            background:rgba(0,0,0,0.3);
+            color:white;
+            padding:20px 50px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+        header h2{
+            font-weight:600;
+            letter-spacing:1px;
         }
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-            transition: 0.3s;
+        .logout-btn{
+            background:linear-gradient(90deg,#ff4e50,#f00000);
+            padding:8px 18px;
+            border-radius:25px;
+            text-decoration:none;
+            color:white;
+            font-size:14px;
+            transition:0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
+        .logout-btn:hover{
+            transform:scale(1.1);
+            box-shadow:0 0 15px rgba(255,0,0,0.7);
         }
 
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+        .container{
+            padding:60px 40px;
+            max-width:1200px;
+            margin:auto;
         }
 
-        .card-content {
-            padding: 20px;
+        .title{
+            text-align:center;
+            margin-bottom:50px;
+            color:white;
+            font-size:28px;
+            font-weight:600;
         }
 
-        .card h3 {
-            margin-top: 0;
-            color: #4e73df;
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
         }
 
-        .card p {
-            color: #555;
-            font-size: 14px;
-            margin-bottom: 20px;
+        .card{
+            background:rgba(255,255,255,0.15);
+            backdrop-filter:blur(20px);
+            border-radius:18px;
+            overflow:hidden;
+            transition:0.4s;
+            box-shadow:0 15px 35px rgba(0,0,0,0.4);
+            color:white;
         }
 
-        .register-btn {
-            display: inline-block;
-            padding: 8px 18px;
-            background: #1cc88a;
-            color: white;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: 0.3s;
+        .card:hover{
+            transform:translateY(-12px) scale(1.03);
+            box-shadow:0 20px 40px rgba(0,0,0,0.6);
         }
 
-        .register-btn:hover {
-            background: #17a673;
+        .card img{
+            width:100%;
+            height:200px;
+            object-fit:cover;
         }
 
-        .empty {
-            text-align: center;
-            color: #777;
-            font-size: 16px;
+        .card-content{
+            padding:25px;
         }
+
+        .card h3{
+            margin-bottom:10px;
+            font-weight:600;
+        }
+
+        .card p{
+            font-size:14px;
+            opacity:0.9;
+            margin-bottom:20px;
+        }
+
+        .register-btn{
+            display:inline-block;
+            padding:8px 20px;
+            background:linear-gradient(90deg,#1cc88a,#4e73df);
+            border-radius:25px;
+            text-decoration:none;
+            color:white;
+            font-size:14px;
+            transition:0.3s;
+        }
+
+        .register-btn:hover{
+            transform:scale(1.1);
+            box-shadow:0 0 20px rgba(28,200,138,0.9);
+        }
+
+        .empty{
+            text-align:center;
+            color:white;
+            font-size:16px;
+        }
+
+        @media(max-width:768px){
+            header{
+                padding:15px 20px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
 <header>
-    <h2>Event Management System</h2>
+    <h2>🚀 Event Management System</h2>
     <a href="/logout" class="logout-btn">Logout</a>
 </header>
 
 <div class="container">
-    <h2 class="title">Available Events</h2>
+    <h2 class="title">✨ Available Events</h2>
 
     {% if events %}
     <div class="cards">
@@ -130,31 +189,22 @@
 
             {% if "AI" in event[1] %}
                 <img src="{{ url_for('static', filename='ai.jpg') }}">
-
             {% elif "Web Development" in event[1] %}
                 <img src="{{ url_for('static', filename='web.jpg') }}">
-
             {% elif "Cyber" in event[1] %}
                 <img src="{{ url_for('static', filename='cyber.jpg') }}">
-
             {% elif "Startup" in event[1] %}
                 <img src="{{ url_for('static', filename='start.jpg') }}">
-
             {% elif "Data Science" in event[1] %}
                 <img src="{{ url_for('static', filename='data.jpg') }}">
-
             {% elif "Hackathon" in event[1] %}
                 <img src="{{ url_for('static', filename='hack.jpg') }}">
-
             {% elif "Cloud" in event[1] %}
                 <img src="{{ url_for('static', filename='cloud.jpg') }}">
-
             {% elif "Robotics" in event[1] %}
                 <img src="{{ url_for('static', filename='robo.jpg') }}">
-
             {% elif "Mobile" in event[1] %}
                 <img src="{{ url_for('static', filename='mobile.jpg') }}">
-
             {% else %}
                 <img src="{{ url_for('static', filename='career.jpg') }}">
             {% endif %}
@@ -164,7 +214,7 @@
                 <p>{{ event[2] }}</p>
 
                 <a href="/register_event/{{ event[0] }}" class="register-btn">
-                    Register
+                    Register Now
                 </a>
             </div>
 
@@ -175,6 +225,6 @@
         <p class="empty">No events available right now.</p>
     {% endif %}
 </div>
-<div class="wave"></div>
+
 </body>
 </html>
