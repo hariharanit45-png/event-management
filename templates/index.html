@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Management System</title>
+</head>
+<body>
+
+    <div style="float:right;">
+        {% if session.get('user') %}
+            Welcome, {{ session.get('user') }} |
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/register">Register</a> |
+            <a href="/login">Login</a>
+        {% endif %}
+    </div>
+
+    <h1>Event Management System</h1>
+
+    <hr>
+
+    <h2>Featured Events</h2>
+
+    <ul>
+        <li>Tech Conference</li>
+        <li>Music Festival</li>
+        <li>Business Seminar</li>
+    </ul>
+
+</body>
+</html>

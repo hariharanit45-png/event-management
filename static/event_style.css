@@ -1,0 +1,81 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(
+        270deg,
+        #ff0080,
+        #7928ca,
+        #2afadf,
+        #ff6a00,
+        #ff0080
+    );
+    background-size: 600% 600%;
+    animation: gradientMove 3s linear infinite;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Strong Visible Movement */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Floating Glow Orbs */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+body::before {
+    background: #1cc88a;
+    top: -100px;
+    left: -100px;
+    animation: float1 6s ease-in-out infinite alternate;
+}
+
+body::after {
+    background: #4e73df;
+    bottom: -100px;
+    right: -100px;
+    animation: float2 8s ease-in-out infinite alternate;
+}
+
+@keyframes float1 {
+    from { transform: translate(0, 0); }
+    to { transform: translate(120px, 80px); }
+}
+
+@keyframes float2 {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-120px, -80px); }
+}
+
+/* Moving Wave */
+.wave {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 180px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 100%;
+    animation: waveMove 6s linear infinite;
+    z-index: -1;
+}
+
+@keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
